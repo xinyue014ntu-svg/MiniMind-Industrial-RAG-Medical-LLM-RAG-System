@@ -1,4 +1,10 @@
-model/__pycache__
-out
-website/
-docs-minimind/
+# 忽略模型输出权重目录
+out/
+checkpoints/
+# 忽略数据集目录
+dataset/
+# 忽略 Python 缓存文件
+__pycache__/
+*.pyc
+# 忽略可能的隐藏系统文件
+.ipynb_checkpoints/
