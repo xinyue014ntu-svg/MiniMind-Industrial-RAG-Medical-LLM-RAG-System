@@ -8,3 +8,8 @@ __pycache__/
 *.pyc
 # 忽略可能的隐藏系统文件
 .ipynb_checkpoints/
+
+# RAG 架构产生的大文件与数据库
+train_zh_0.json
+chroma_medical_db/
+medical_kb.txt
