@@ -53,4 +53,4 @@ python build_medical_db.py
 ### 2. 启动赛博华佗全量诊所
 python chat_rag.py --weight full_sft --lora_weight lora_medical
 
-*(⚠️ 开发者提示：受限于 25M 极小参数架构，模型在处理超长真实 RAG 文献时可能出现解码乱码现象，该分支核心代码已证明可无缝平替至 7B 以上级别工业模型。)*
+*(⚠️ 开发者提示：受限于 25M 极小参数架构，模型在处理超长真实 RAG 文献时可能出现解码乱码现象，该分支核心代码可无缝平替至 7B 以上级别工业模型。)*
