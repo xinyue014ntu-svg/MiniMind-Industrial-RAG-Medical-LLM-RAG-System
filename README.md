@@ -32,14 +32,15 @@
 ## 🛠️ 技术栈 (Tech Stack)
 
 * **算法架构**: Transformer (Causal LM), LoRA, RAG (Retrieval-Augmented Generation)
-* **核心框架**: PyTorch, Transformers, LangChain, ChromaDB
+* **核心框架**: PyTorch, HuggingFace Transformers, LangChain, ChromaDB
+* **工业基座**: MiniMind (25M), Qwen2.5 (7B), text2vec-base-chinese
 * **开发环境**: AutoDL (Linux), JupyterLab
 
 ## 📂 核心文件说明
 
 * `eval_llm.py`：基础对话脚本。支持单模型推理与挂载 LoRA 权重的推理测试。
 * `build_medical_db.py`：后台离线数据引擎。负责读取 GB 级 JSON 语料，进行长文本切片与向量化，并构建持久化 ChromaDB 目录。
-* `chat_rag.py`：在线 RAG 问答引擎。无缝串联 Chroma 向量检索与 LLM 生成，内置大白话 Prompt 组装与复读机惩罚（Repetition Penalty）动态调参。
+* `chat_rag.py`：**在线 RAG 问答引擎**。采用解耦架构，无缝串联 Chroma 向量检索与 LLM 生成（支持 Qwen 7B ）。
 
 ## 🚀 快速启动 (Quick Start)
 
