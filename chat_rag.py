@@ -18,11 +18,11 @@ def setup_rag():
     return vector_db
 
 def main():
-    # 挂载外挂大脑（检索部分代码完全不变，这就是解耦的魅力！）
+    # 挂载外挂大脑（检索部分代码完全不变，这就是解耦的作用。）
     vector_db = setup_rag()
 
     print("🚀 [2/2] 正在唤醒科室主任 (Qwen2.5-7B-Instruct) ... 这可能需要约 14GB 显存，请耐心等待。")
-    # 替换为真实的工业级大模型路径（如果你在 AutoDL 上，确保你选了至少 24GB 显存的卡，比如 RTX 3090/4090）
+    # 替换为真实的工业级大模型路径（选择至少 24GB 显存的卡，比如 RTX 3090/4090）
     model_name = "Qwen/Qwen2.5-7B-Instruct"
     
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
@@ -47,12 +47,12 @@ def main():
         if not user_question.strip():
             continue
 
-        # 步骤A：依然从你的知识库中极速检索
+        # 步骤A：依然从知识库中极速检索
         docs_and_scores = vector_db.similarity_search(user_question, k=1)
         retrieved_context = docs_and_scores[0].page_content if docs_and_scores else "未检索到相关资料"
         print(f"   (💡 后台精准检索到相关文献: {retrieved_context[:40]}...)")
 
-        # 步骤B：使用大厂标准的 System Prompt 规范约束大模型行为
+        # 步骤B：使用标准的 System Prompt 规范约束大模型行为
         messages = [
             {"role": "system", "content": "你是一位专业且耐心的三甲医院主治医师。请务必基于提供的【参考资料】来回答患者的问题。如果参考资料中没有相关信息，请明确告知患者，切勿凭借自身基础知识胡编乱造（避免幻觉）。"},
             {"role": "user", "content": f"【参考资料】：\n{retrieved_context}\n\n【患者问题】：\n{user_question}\n\n请给出你的专业建议："}
